@@ -8,11 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Sử dụng Font hệ thống chuẩn (sans-serif) để chống lỗi hiển thị trên mọi thiết bị -->
     <style>
-        body { font-family: 'Nunito', sans-serif; background-color: #f0fdf4; -webkit-tap-highlight-color: transparent; }
-        h1, h2, h3, .font-heading { font-family: 'Fredoka', cursive; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #f0fdf4; 
+            -webkit-tap-highlight-color: transparent; 
+        }
         .pulse-wave { animation: pulse 1.5s infinite; }
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
@@ -31,7 +33,7 @@
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold tracking-wide leading-none">ENGLISH 3</h1>
+                    <h1 class="text-base font-extrabold tracking-wide leading-none">ENGLISH 3</h1>
                     <p class="text-[10px] text-emerald-100 font-semibold">GLOBAL SUCCESS - TẬP 1</p>
                 </div>
             </div>
@@ -51,7 +53,7 @@
         <section id="view-units" class="space-y-4">
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex justify-between items-center">
                 <div>
-                    <h2 class="text-xl font-bold text-emerald-900">Danh Sách Bài Học</h2>
+                    <h2 class="text-lg font-bold text-emerald-900">Danh Sách Bài Học</h2>
                     <p class="text-xs text-gray-500">Tiếng Anh 3 Global Success - Tập 1</p>
                 </div>
                 <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-2.5 py-1 rounded-xl">Unit 1 - 10</span>
@@ -71,10 +73,10 @@
 
             <!-- Mobile Tabs -->
             <div class="flex border-b border-gray-200">
-                <button onclick="switchTab('vocab')" id="tab-vocab" class="flex-1 pb-2.5 text-base font-bold border-b-4 border-emerald-600 text-emerald-700 text-center">
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="flex-1 pb-2.5 text-sm font-bold border-b-4 border-emerald-600 text-emerald-700 text-center">
                     Từ Vựng
                 </button>
-                <button onclick="switchTab('sentence')" id="tab-sentence" class="flex-1 pb-2.5 text-base font-bold text-gray-400 border-b-4 border-transparent text-center">
+                <button onclick="switchTab('sentence')" id="tab-sentence" class="flex-1 pb-2.5 text-sm font-bold text-gray-400 border-b-4 border-transparent text-center">
                     Mẫu Câu
                 </button>
             </div>
@@ -86,7 +88,7 @@
             <div id="sentence-container" class="hidden grid grid-cols-1 gap-3"></div>
         </section>
 
-        <!-- VIEW 3: SPEAKING PRACTICE (OPTIMIZED FOR MOBILE MIC) -->
+        <!-- VIEW 3: SPEAKING PRACTICE (AUTO-ADVANCE) -->
         <section id="view-practice" class="hidden space-y-4">
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 text-center space-y-4">
                 <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full text-xs">Luyện Nói AI</span>
@@ -173,7 +175,6 @@
 
     <!-- JavaScript Engine -->
     <script>
-        // Full Data Tập 1 SGK Tiếng Anh 3
         const curriculumDataBook1 = [
             {
                 unit: 1, title: "Unit 1: Hello", theme: "Me and My Friends", desc: "Chào hỏi & Giới thiệu",
@@ -371,7 +372,7 @@
                 card.innerHTML = `
                     <div>
                         <span class="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full">${u.theme}</span>
-                        <h3 class="text-lg font-bold text-gray-800 mt-1">${u.title}</h3>
+                        <h3 class="text-base font-bold text-gray-800 mt-1">${u.title}</h3>
                         <p class="text-gray-400 text-xs">${u.vocab.length} từ • ${u.sentences.length} mẫu câu</p>
                     </div>
                     <i class="fa-solid fa-chevron-right text-emerald-600 text-sm"></i>
@@ -386,7 +387,7 @@
 
             document.getElementById('unit-header-card').innerHTML = `
                 <span class="text-[10px] font-bold px-2 py-0.5 bg-white/20 rounded-full text-white">${currentUnit.theme}</span>
-                <h2 class="text-2xl font-bold mt-1">${currentUnit.title}</h2>
+                <h2 class="text-xl font-bold mt-1">${currentUnit.title}</h2>
                 <p class="text-emerald-100 text-xs">${currentUnit.desc}</p>
             `;
 
@@ -405,14 +406,14 @@
                 card.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div>
-                            <h4 class="text-xl font-bold text-emerald-900">${v.word}</h4>
+                            <h4 class="text-lg font-bold text-emerald-900">${v.word}</h4>
                             <p class="text-xs font-semibold text-emerald-600">${v.ipa}</p>
                         </div>
                         <button onclick="speakText('${v.word}')" class="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center active:bg-emerald-600 active:text-white transition">
                             <i class="fa-solid fa-volume-high text-sm"></i>
                         </button>
                     </div>
-                    <p class="text-base font-bold text-gray-700">${v.mean}</p>
+                    <p class="text-sm font-bold text-gray-700">${v.mean}</p>
                     <button onclick="startPracticeFor('${v.word}', '${v.mean}')" class="w-full py-2 bg-emerald-50 text-emerald-700 font-bold rounded-xl text-xs hover:bg-emerald-100 transition flex items-center justify-center gap-1">
                         <i class="fa-solid fa-microphone"></i> Luyện nói từ này
                     </button>
@@ -432,7 +433,7 @@
                 
                 card.innerHTML = `
                     <div>
-                        <p class="text-lg font-bold text-gray-800">${s.en}</p>
+                        <p class="text-base font-bold text-gray-800">${s.en}</p>
                         <p class="text-gray-500 font-semibold text-xs">${s.vi}</p>
                     </div>
                     <div class="flex gap-2">
@@ -452,13 +453,13 @@
             if (tab === 'vocab') {
                 document.getElementById('vocab-container').classList.remove('hidden');
                 document.getElementById('sentence-container').classList.add('hidden');
-                document.getElementById('tab-vocab').className = "flex-1 pb-2.5 text-base font-bold border-b-4 border-emerald-600 text-emerald-700 text-center";
-                document.getElementById('tab-sentence').className = "flex-1 pb-2.5 text-base font-bold text-gray-400 border-b-4 border-transparent text-center";
+                document.getElementById('tab-vocab').className = "flex-1 pb-2.5 text-sm font-bold border-b-4 border-emerald-600 text-emerald-700 text-center";
+                document.getElementById('tab-sentence').className = "flex-1 pb-2.5 text-sm font-bold text-gray-400 border-b-4 border-transparent text-center";
             } else {
                 document.getElementById('vocab-container').classList.add('hidden');
                 document.getElementById('sentence-container').classList.remove('hidden');
-                document.getElementById('tab-sentence').className = "flex-1 pb-2.5 text-base font-bold border-b-4 border-emerald-600 text-emerald-700 text-center";
-                document.getElementById('tab-vocab').className = "flex-1 pb-2.5 text-base font-bold text-gray-400 border-b-4 border-transparent text-center";
+                document.getElementById('tab-sentence').className = "flex-1 pb-2.5 text-sm font-bold border-b-4 border-emerald-600 text-emerald-700 text-center";
+                document.getElementById('tab-vocab').className = "flex-1 pb-2.5 text-sm font-bold text-gray-400 border-b-4 border-transparent text-center";
             }
         }
 
@@ -468,7 +469,6 @@
             });
             document.getElementById(`view-${viewName}`).classList.remove('hidden');
 
-            // Bottom Nav active state
             ['units', 'practice', 'game'].forEach(nav => {
                 const btn = document.getElementById(`nav-btn-${nav}`);
                 if (nav === viewName || (viewName === 'detail' && nav === 'units')) {
@@ -483,7 +483,6 @@
             }
         }
 
-        // Engine Phát Âm
         function speakText(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -502,7 +501,6 @@
             }
         }
 
-        // Engine Nhận Diện Giọng Nói Tối Ưu Mobile
         function initSpeechRecognition() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (SpeechRecognition) {
@@ -562,10 +560,14 @@
 
             if (cleanSpoken === cleanTarget || cleanTarget.includes(cleanSpoken) || cleanSpoken.includes(cleanTarget)) {
                 resultBox.className = "p-3 rounded-xl font-bold text-sm bg-green-100 text-green-800 border border-green-300";
-                resultBox.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> GIỎI LẮM! Bạn nói: "${spoken}" (+1 ⭐)`;
+                resultBox.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> GIỎI LẮM! ("${spoken}"). Đang chuyển câu tiếp theo...`;
                 stars += 1;
                 updateStarsDisplay();
                 speakText("Good job!");
+                
+                setTimeout(() => {
+                    loadNextPracticeItem();
+                }, 1500);
             } else {
                 resultBox.className = "p-3 rounded-xl font-bold text-sm bg-orange-100 text-orange-800 border border-orange-300";
                 resultBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> THỬ LẠI! Bạn nói: "${spoken}"`;
@@ -573,7 +575,20 @@
             }
         }
 
-        // Mini Game Logic
+        function loadNextPracticeItem() {
+            let pool = [];
+            if (currentUnit) {
+                pool = [...currentUnit.vocab.map(v => ({en: v.word, vi: v.mean})), ...currentUnit.sentences];
+            } else {
+                pool = curriculumDataBook1.flatMap(u => [...u.vocab.map(v => ({en: v.word, vi: v.mean})), ...u.sentences]);
+            }
+            
+            const nextItem = pool[Math.floor(Math.random() * pool.length)];
+            if (nextItem) {
+                startPracticeFor(nextItem.en, nextItem.vi);
+            }
+        }
+
         function initGame() {
             gameScore = 0;
             document.getElementById('game-score').innerText = gameScore;
@@ -602,18 +617,18 @@
 
             container.innerHTML = `
                 <p class="text-xs text-gray-400 font-semibold">Chọn từ Tiếng Anh tương ứng với nghĩa:</p>
-                <h3 class="text-2xl font-extrabold text-emerald-800 my-2">"${targetItem.mean}"</h3>
+                <h3 class="text-xl font-extrabold text-emerald-800 my-2">"${targetItem.mean}"</h3>
                 <div id="quiz-options" class="grid grid-cols-1 gap-2.5 pt-2"></div>
             `;
 
             const optionsBox = document.getElementById('quiz-options');
             options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "w-full py-3 px-4 bg-emerald-50 text-emerald-900 font-bold rounded-xl border border-emerald-200 active:scale-95 transition text-base";
+                btn.className = "w-full py-3 px-4 bg-emerald-50 text-emerald-900 font-bold rounded-xl border border-emerald-200 active:scale-95 transition text-sm";
                 btn.innerText = opt;
                 btn.onclick = () => {
                     if (opt === targetItem.word) {
-                        btn.className = "w-full py-3 px-4 bg-green-500 text-white font-bold rounded-xl border border-green-600 text-base shadow";
+                        btn.className = "w-full py-3 px-4 bg-green-500 text-white font-bold rounded-xl border border-green-600 text-sm shadow";
                         gameScore += 10;
                         stars += 1;
                         document.getElementById('game-score').innerText = gameScore;
@@ -621,7 +636,7 @@
                         speakText("Correct!");
                         setTimeout(nextQuizQuestion, 1000);
                     } else {
-                        btn.className = "w-full py-3 px-4 bg-red-400 text-white font-bold rounded-xl border border-red-500 text-base";
+                        btn.className = "w-full py-3 px-4 bg-red-400 text-white font-bold rounded-xl border border-red-500 text-sm";
                         speakText("Try again!");
                     }
                 };
